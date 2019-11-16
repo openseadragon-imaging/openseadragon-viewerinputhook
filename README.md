@@ -12,9 +12,17 @@ overriding the default behavior.
 
 ### Usage
 
-Download [openseadragon-viewerinputhook.min.js](http://msalsbery.github.io/openseadragon-imaging/builds/openseadragon-viewerinputhook.min.js) (or the un-minified [openseadragon-viewerinputhook.js](http://msalsbery.github.io/openseadragon-imaging/builds/openseadragon-viewerinputhook.js))
+_**Prerequisite note: OpenSeadragonViewerInputHook requires [OpenSeadragon](https://github.com/openseadragon/openseadragon) version 2.0+.**_
 
-To use the plugin, add **openseadragon-viewerinputhook.min.js** after **openseadragon.min.js** to your site.
+The OpenSeadragonViewerInputHook bundle can be obtained the following ways:
+
+1. Direct download [openseadragon-viewerinputhook.js](http://msalsbery.github.io/openseadragon-imaging/builds/openseadragon-viewerinputhook.js) (and optionally [openseadragon-viewerinputhook.js.map](http://msalsbery.github.io/openseadragon-imaging/builds/openseadragon-viewerinputhook.js.map))
+2. npm
+```
+    npm install @openseadragon-imaging/openseadragon-viewerinputhook
+```
+
+The OpenSeadragonViewerInputHook bundle can be included using a script tag in HTML or imported as a library module (ES2015, CommonJS, AMD).
 
 A **ViewerInputHook** object can be created and attached (if desired) to an [OpenSeadragon.Viewer](http://openseadragon.github.io/docs/OpenSeadragon.Viewer.html) two ways:
 
@@ -25,7 +33,34 @@ A **ViewerInputHook** object can be created and attached (if desired) to an [Ope
 Both methods return a new ViewerInputHook object (although there's currently no public properties or methods available), and
 both methods take an options parameter where the event handlers to be hooked may be specified (see the 'Details' section below).
 
+**Example using an HTML script tag**
+```html
+	<script type="text/javascript" src="path_to/openseadragon/openseadragon.js"></script>
+	<script type="text/javascript" src="path_to/openseadragon-imaging/openseadragon-viewerinputhook.js"></script>
+```
 ```javascript
+    // Example 1 - Use the Viewer.addViewerInputHook() method to create a ViewerInputHook
+
+    // create an OpenSeadragon viewer
+    var viewer = window.OpenSeadragon({...});
+    // add a ViewerInputHook to the viewer
+    var viewerInputHook = viewer.addViewerInputHook({ hooks: [...] });
+
+
+    // Example 2 - Attach a new ViewerInputHook to an existing OpenSeadragon.Viewer
+
+    var viewerInputHook = new window.OpenSeadragonImaging.ViewerInputHook({ viewer: existingviewer, hooks: [...] });
+```
+
+**Example importing as a module**
+```
+    npm install openseadragon --save
+    npm install @openseadragon-imaging/openseadragon-viewerinputhook --save
+```
+```javascript
+import OpenSeadragon from 'openseadragon';
+import OpenSeadragonViewerInputHook from '@openseadragon-imaging/openseadragon-viewerinputhook';
+
     // Example 1 - Use the Viewer.addViewerInputHook() method to create a ViewerInputHook
 
     // create an OpenSeadragon viewer
@@ -36,7 +71,7 @@ both methods take an options parameter where the event handlers to be hooked may
 
     // Example 2 - Attach a new ViewerInputHook to an existing OpenSeadragon.Viewer
 
-    var viewerInputHook = new OpenSeadragonImaging.ViewerInputHook({ viewer: existingviewer, hooks: [...] });
+    var viewerInputHook = new OpenSeadragonViewerInputHook({ viewer: existingviewer, hooks: [...] });
 ```
 
 ### Details

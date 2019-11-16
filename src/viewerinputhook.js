@@ -19,7 +19,7 @@
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-/* global OpenSeadragon */
+import OpenSeadragon from 'openseadragon';
 
 /**
  * @file
@@ -34,7 +34,7 @@
  *
  */
 
-(function (OSD, $, undefined) {
+export default (function (OSD, $) {
 	if (!OSD.version || OSD.version.major < 1) {
 		throw new Error(
 			'OpenSeadragonViewerInputHook requires OpenSeadragon version 1.0.0+'
@@ -123,7 +123,7 @@
 	 * @property {Number} revision - The revision number.
 	 */
 	$.ViewerInputHook.version = {
-		versionStr: '<%= viewerinputhookVersion.versionStr %>'
+		versionStr: '<%= pkg.version %>'
 	};
 	var versionSplits = $.ViewerInputHook.version.versionStr.split('.');
 	$.ViewerInputHook.version.major = parseInt(versionSplits[0], 10);
@@ -141,4 +141,6 @@
 		}
 		return event.stopBubbling ? false : ret;
 	};
-})(OpenSeadragon, (window.OpenSeadragonImaging = window.OpenSeadragonImaging || {}));
+
+	return $.ViewerInputHook;
+}(OpenSeadragon || window.OpenSeadragon, window.OpenSeadragonImaging = window.OpenSeadragonImaging || {}));

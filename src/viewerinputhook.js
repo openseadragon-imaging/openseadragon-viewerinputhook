@@ -98,7 +98,6 @@ export default (function (OSD, $) {
 			} else {
 				curTracker = options.hooks[curHook].tracker;
 			}
-			/*jshint loopfunc:true*/
 			(function (_this, tracker, handler, hookHandler) {
 				var origHandler = tracker[handler];
 				tracker[handler] = function (event) {
@@ -110,7 +109,6 @@ export default (function (OSD, $) {
 				options.hooks[curHook].handler,
 				options.hooks[curHook].hookHandler
 			);
-			/*jshint loopfunc:false*/
 		}
 	};
 
@@ -143,4 +141,7 @@ export default (function (OSD, $) {
 	};
 
 	return $.ViewerInputHook;
-}(OpenSeadragon || window.OpenSeadragon, window.OpenSeadragonImaging = window.OpenSeadragonImaging || {}));
+})(
+	OpenSeadragon || window.OpenSeadragon,
+	(window.OpenSeadragonImaging = window.OpenSeadragonImaging || {})
+);

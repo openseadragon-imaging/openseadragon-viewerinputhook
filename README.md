@@ -1,6 +1,6 @@
 ## OpenSeadragonViewerInputHook
-[![Gitter](https://badges.gitter.im/Join_Chat.svg)](https://gitter.im/msalsbery/OpenSeadragonImaging?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
+[![Gitter](https://badges.gitter.im/Join_Chat.svg)](https://gitter.im/msalsbery/OpenSeadragonImaging?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 OpenSeadragonViewerInputHook is a plugin for [OpenSeadragon](https://github.com/openseadragon/openseadragon) 1.0.0+
 which provides hooks into the user input event pipeline for providing additional behavior and/or
@@ -18,6 +18,7 @@ The OpenSeadragonViewerInputHook bundle can be obtained the following ways:
 
 1. Direct download [openseadragon-viewerinputhook.js](http://msalsbery.github.io/openseadragon-imaging/builds/openseadragon-viewerinputhook.js) (and optionally [openseadragon-viewerinputhook.js.map](http://msalsbery.github.io/openseadragon-imaging/builds/openseadragon-viewerinputhook.js.map))
 2. npm
+
 ```
     npm install @openseadragon-imaging/openseadragon-viewerinputhook
 ```
@@ -26,7 +27,6 @@ The OpenSeadragonViewerInputHook bundle can be included using a script tag in HT
 
 A **ViewerInputHook** object can be created and attached (if desired) to an [OpenSeadragon.Viewer](http://openseadragon.github.io/docs/OpenSeadragon.Viewer.html) two ways:
 
-
 1. Call the addViewerInputHook method on the viewer
 2. Create a new ViewerInputHook object, passing a viewer reference in the options parameter (optional)
 
@@ -34,10 +34,18 @@ Both methods return a new ViewerInputHook object (although there's currently no 
 both methods take an options parameter where the event handlers to be hooked may be specified (see the 'Details' section below).
 
 **Example using an HTML script tag**
+
 ```html
-	<script type="text/javascript" src="path_to/openseadragon/openseadragon.js"></script>
-	<script type="text/javascript" src="path_to/openseadragon-imaging/openseadragon-viewerinputhook.js"></script>
+<script
+  type="text/javascript"
+  src="path_to/openseadragon/openseadragon.js"
+></script>
+<script
+  type="text/javascript"
+  src="path_to/openseadragon-imaging/openseadragon-viewerinputhook.js"
+></script>
 ```
+
 ```javascript
     // Example 1 - Use the Viewer.addViewerInputHook() method to create a ViewerInputHook
 
@@ -53,10 +61,12 @@ both methods take an options parameter where the event handlers to be hooked may
 ```
 
 **Example importing as a module**
+
 ```
     npm install openseadragon --save
     npm install @openseadragon-imaging/openseadragon-viewerinputhook --save
 ```
+
 ```javascript
 import OpenSeadragon from 'openseadragon';
 import OpenSeadragonViewerInputHook from '@openseadragon-imaging/openseadragon-viewerinputhook';
@@ -87,7 +97,6 @@ or one of the pre-defined OpenSeadragon viewer trackers - currently 'viewer' or 
 The handler property of each hook definition specifies which MouseTracker handler to hook.
 Valid values are:
 
-
 1. 'enterHandler'
 2. 'exitHandler'
 3. 'pressHandler'
@@ -108,7 +117,7 @@ Valid values are:
 18. 'focusHandler'
 19. 'blurHandler'
 
-The hookHandler property of each hook definition should be the user-defined event handler callback.  All event handler callbacks have the following signature:
+The hookHandler property of each hook definition should be the user-defined event handler callback. All event handler callbacks have the following signature:
 
     handlerFunc(event)
 
@@ -117,7 +126,6 @@ so the attached handler will be called first. Additional ViewerInputHook objects
 where the last added handler(s) will be called first.
 
 Your hook event handler methods can control the event handling behavior in one or more of the following ways:
-
 
 1. Set event.stopHandlers = true to prevent any more handlers in the event handler chain from being called
 2. Set event.stopBubbling = true to prevent the original DOM event from bubbling up the DOM tree (all handlers returning false will also disable bubbling)
@@ -158,7 +166,6 @@ The sample code is in [scripts/viewmodel.js](http://msalsbery.github.io/opensead
 ### Notes
 
 ### TODO...
-
 
 1. jsdoc documentation
 2. Provide hooks on reference strip events

@@ -100,6 +100,7 @@ module.exports = {
 			'dist/',
 			'docs/',
 			'doc-conf.json',
+			'package.json',
 			'package-lock.json'
 		]
 	}

@@ -9,11 +9,22 @@
   "private": false,
   "author": {
     "name": "Mark Salsbery",
-    "email": "msalsbery@hotmail.com"
+    "email": "msalsbery@hotmail.com",
+    "url": "https://github.com/msalsbery"
   },
-  "contributors": [],
+  "contributors": [
+    {
+      "name": "Tammy DiPrima"
+    },
+    {
+      "name": "Stefan Frühwirth"
+    },
+    {
+      "name": "Ian Gilman"
+    }
+  ],
   "main": "dist/openseadragon-viewerinputhook.js",
-  "homepage": "https://github.com/openseadragon-imaging/openseadragon-viewerinputhook",
+  "homepage": "https://github.com/openseadragon-imaging/openseadragon-viewerinputhook#readme",
   "repository": {
     "type": "git",
     "url": "https://github.com/openseadragon-imaging/openseadragon-viewerinputhook.git"
@@ -22,7 +33,10 @@
   "keywords": [
     "openseadragon",
     "openseadragonimaging",
-    "openseadragon plugin"
+    "deep",
+    "zoom",
+    "dzi",
+    "plugin"
   ],
   "engines": {
     "node": ">= 10.0.0",

@@ -22,15 +22,15 @@
 import OpenSeadragon from 'openseadragon';
 
 /**
- * @file
- * @version  <%= pkg.name %> <%= pkg.version %>
+ * @file openseadragon-viewerinputhook.js
+ * @version <%= pkg.version %>
  * @author Mark Salsbery <msalsbery@hotmail.com>
  *
  */
 
 /**
  * @module openseadragon-viewerinputhook
- * @version  <%= pkg.name %> <%= pkg.version %>
+ * @version <%= pkg.version %>
  *
  */
 
@@ -120,13 +120,7 @@ export default (function (OSD, $) {
 	 * @property {Number} minor - The minor version number.
 	 * @property {Number} revision - The revision number.
 	 */
-	$.ViewerInputHook.version = {
-		versionStr: '<%= pkg.version %>'
-	};
-	var versionSplits = $.ViewerInputHook.version.versionStr.split('.');
-	$.ViewerInputHook.version.major = parseInt(versionSplits[0], 10);
-	$.ViewerInputHook.version.minor = parseInt(versionSplits[1], 10);
-	$.ViewerInputHook.version.revision = parseInt(versionSplits[2], 10);
+	$.ViewerInputHook.version = '<%= pkg.version.obj %>';
 
 	$.ViewerInputHook.prototype.callHandlers = function (
 		hookHandler,

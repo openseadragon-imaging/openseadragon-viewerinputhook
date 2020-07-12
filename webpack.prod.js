@@ -18,7 +18,8 @@ const bannerOpts = {
 		gitHash +
 		' (' +
 		(gitDirty ? 'dirty' : 'clean') +
-		')'
+		')' +
+		'  @license MIT'
 };
 
 const minifyOpts = {

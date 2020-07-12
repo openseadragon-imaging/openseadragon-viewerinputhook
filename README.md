@@ -30,8 +30,7 @@ A **ViewerInputHook** object can be created and attached (if desired) to an [Ope
 1. Call the addViewerInputHook method on the viewer
 2. Create a new ViewerInputHook object, passing a viewer reference in the options parameter (optional)
 
-Both methods return a new ViewerInputHook object (although there's currently no public properties or methods available), and
-both methods take an options parameter where the event handlers to be hooked may be specified (see the 'Details' section below).
+Both methods return a new ViewerInputHook object, and both methods take an options parameter where the event handlers to be hooked may be specified (see the 'Details' section below).
 
 **Example using an HTML script tag**
 
@@ -123,7 +122,7 @@ The hookHandler property of each hook definition should be the user-defined even
 
 The ViewerInputHook class inserts your event hook handler methods in front of any existing event handler methods
 so the attached handler will be called first. Additional ViewerInputHook objects can be added on the same viewer/MouseTracker to create a chain of hook methods,
-where the last added handler(s) will be called first.
+where the last added handler(s) will be called first. **Note: If multiple ViewerInputHook are attached to the same viewer/MouseTracker, destroy() should be called for each ViewerInputHook in reverse order of attachment!**
 
 Your hook event handler methods can control the event handling behavior in one or more of the following ways:
 

@@ -1,24 +1,3 @@
-/*
- * Copyright (c) 2013-2019 Mark Salsbery
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy of
- * this software and associated documentation files (the "Software"), to deal in
- * the Software without restriction, including without limitation the rights to
- * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
- * the Software, and to permit persons to whom the Software is furnished to do so,
- * subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
- * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
- * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
- * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
- * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- */
-
 import OpenSeadragon from 'openseadragon';
 
 /**
@@ -31,6 +10,7 @@ import OpenSeadragon from 'openseadragon';
 /**
  * @module openseadragon-viewerinputhook
  * @version <%= pkg.version %>
+ * @requires module:openseadragon
  *
  */
 
@@ -74,16 +54,18 @@ export default (function (OSD, $) {
 		options = options || {};
 		options.hooks = options.hooks || [];
 
+		this.viewer = options.viewer || null;
 		this.viewerTrackers = {};
+		this.hooks = [];
 
-		if (options.viewer) {
-			this.viewerTrackers.viewer = options.viewer.innerTracker;
-			this.viewerTrackers.viewer_outer = options.viewer.outerTracker;
+		if (this.viewer) {
+			this.viewerTrackers.viewer = this.viewer.innerTracker;
+			this.viewerTrackers.viewer_outer = this.viewer.outerTracker;
 		}
 
 		for (curHook = 0; curHook < options.hooks.length; curHook++) {
 			if (typeof options.hooks[curHook].tracker === 'string') {
-				if (!options.viewer) {
+				if (!this.viewer) {
 					throw new Error('A viewer must be specified.');
 				}
 				curTracker = this.viewerTrackers[
@@ -98,10 +80,18 @@ export default (function (OSD, $) {
 			} else {
 				curTracker = options.hooks[curHook].tracker;
 			}
+
+			this.hooks.push({
+				tracker: curTracker,
+				handlerName: options.hooks[curHook].handler,
+				origHandler: curTracker[options.hooks[curHook].handler],
+				hookHandler: options.hooks[curHook].hookHandler
+			});
+
 			(function (_this, tracker, handler, hookHandler) {
 				var origHandler = tracker[handler];
 				tracker[handler] = function (event) {
-					return _this.callHandlers(hookHandler, origHandler, event);
+					return _this._callHandlers(hookHandler, origHandler, event);
 				};
 			})(
 				this,
@@ -115,6 +105,7 @@ export default (function (OSD, $) {
 	/**
 	 * ViewerInputHook version.
 	 * @member {Object} OpenSeadragonImaging.ViewerInputHook.version
+	 * @static
 	 * @property {String} versionStr - The version number as a string ('major.minor.revision').
 	 * @property {Number} major - The major version number.
 	 * @property {Number} minor - The minor version number.
@@ -122,7 +113,7 @@ export default (function (OSD, $) {
 	 */
 	$.ViewerInputHook.version = '<%= pkg.version.obj %>';
 
-	$.ViewerInputHook.prototype.callHandlers = function (
+	$.ViewerInputHook.prototype._callHandlers = function (
 		hookHandler,
 		origHandler,
 		event
@@ -132,6 +123,25 @@ export default (function (OSD, $) {
 			ret = origHandler(event);
 		}
 		return event.stopBubbling ? false : ret;
+	};
+
+	/**
+	 * Remove hooks and OpenSeadragon references. Call before
+	 * OpenSeadragon.Viewer.destroy().
+	 * @function OpenSeadragonImaging.ViewerInputHook.prototype#destroy
+	 * @since 2.2.0
+	 */
+	$.ViewerInputHook.prototype.destroy = function () {
+		while (this.hooks.length > 0) {
+			let curHook = this.hooks.pop();
+			curHook.tracker[curHook.handlerName] = curHook.origHandler;
+		}
+
+		if (this.viewer) {
+			delete this.viewerTrackers.viewer;
+			delete this.viewerTrackers.viewer_outer;
+			this.viewer = null;
+		}
 	};
 
 	return $.ViewerInputHook;

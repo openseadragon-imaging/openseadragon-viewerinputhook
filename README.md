@@ -1,4 +1,4 @@
-## OpenSeadragonViewerInputHook
+# OpenSeadragonViewerInputHook
 
 [![Gitter](https://badges.gitter.im/openseadragon-imaging/community.svg)](https://gitter.im/openseadragon-imaging/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
@@ -6,17 +6,17 @@ OpenSeadragonViewerInputHook is a plugin for [OpenSeadragon](https://github.com/
 which provides hooks into the user input event pipeline for providing additional behavior and/or
 overriding the default behavior.
 
-[View the Documentation](http://msalsbery.github.io/openseadragon-imaging/docs/openseadragon-viewerinputhook/index.html)
+[View the Documentation](https://openseadragon-imaging.github.io/docs/openseadragon-viewerinputhook/index.html)
 
-[See the OpenSeadragon Imaging Demo/Test Site Live](http://msalsbery.github.io/openseadragon-imaging/demo/index.html)
+[Demo/Test Site](https://openseadragon-imaging.github.io/#/imaginghelper)
 
-### Usage
+## Usage
 
 _**Prerequisite note: OpenSeadragonViewerInputHook requires [OpenSeadragon](https://github.com/openseadragon/openseadragon) version 2.0+.**_
 
 The OpenSeadragonViewerInputHook bundle can be obtained the following ways:
 
-1. Direct download [openseadragon-viewerinputhook.js](http://msalsbery.github.io/openseadragon-imaging/builds/openseadragon-viewerinputhook.js) (and optionally [openseadragon-viewerinputhook.js.map](http://msalsbery.github.io/openseadragon-imaging/builds/openseadragon-viewerinputhook.js.map))
+1. Direct download [openseadragon-viewerinputhook.js](https://openseadragon-imaging.github.io/builds/openseadragon-viewerinputhook.js) (and optionally [openseadragon-viewerinputhook.js.map](https://openseadragon-imaging.github.io/builds/openseadragon-viewerinputhook.js.map))
 2. npm
 
 ```
@@ -25,7 +25,7 @@ The OpenSeadragonViewerInputHook bundle can be obtained the following ways:
 
 The OpenSeadragonViewerInputHook bundle can be included using a script tag in HTML or imported as a library module (ES2015, CommonJS, AMD).
 
-A **ViewerInputHook** object can be created and attached (if desired) to an [OpenSeadragon.Viewer](http://openseadragon.github.io/docs/OpenSeadragon.Viewer.html) two ways:
+A **ViewerInputHook** object can be created and attached (if desired) to an [OpenSeadragon.Viewer](https://openseadragon.github.io/docs/OpenSeadragon.Viewer.html) two ways:
 
 1. Call the addViewerInputHook method on the viewer
 2. Create a new ViewerInputHook object, passing a viewer reference in the options parameter (optional)
@@ -83,14 +83,14 @@ import OpenSeadragonViewerInputHook from '@openseadragon-imaging/openseadragon-v
     var viewerInputHook = new OpenSeadragonViewerInputHook({ viewer: existingviewer, hooks: [...] });
 ```
 
-### Details
+## Details
 
 Event handler callbacks are specified in the hooks property (array) of the options object passed when creating a ViewerInputHook object (see example code below).
 Any number of hooks can be specified.
 
 Each hook specification in the array should have three properties - tracker, handler, and hookHandler.
 
-The tracker property of each hook definition can be a reference to any [OpenSeadragon.MouseTracker](http://openseadragon.github.io/docs/OpenSeadragon.MouseTracker.html) instance,
+The tracker property of each hook definition can be a reference to any [OpenSeadragon.MouseTracker](https://openseadragon.github.io/docs/OpenSeadragon.MouseTracker.html) instance,
 or one of the pre-defined OpenSeadragon viewer trackers - currently 'viewer' or 'viewer_outer'.
 
 The handler property of each hook definition specifies which MouseTracker handler to hook.
@@ -155,16 +155,14 @@ Your hook event handler methods can control the event handling behavior in one o
     }
 ```
 
-### Demo/Test Site
+## Demo/Test Site
 
-The [OpenSeadragon Imaging demo/test site](https://github.com/msalsbery/OpenSeadragonImaging) uses
+The [demo site](https://openseadragon-imaging.github.io/#/imaginghelper) uses
 OpenSeadragonViewerInputHook to monitor cursor position and provide custom click and mousewheel event actions.
 
-The sample code is in [scripts/viewmodel.js](http://msalsbery.github.io/openseadragon-imaging/demo/scripts/viewmodel.js).
+The source code can be found [here](https://github.com/openseadragon-imaging/openseadragon-imaging/tree/master/site.github.io/src/page-imaginghelper).
 
-### Notes
-
-### TODO...
+## TODO
 
 1. jsdoc documentation
 2. Provide hooks on reference strip events

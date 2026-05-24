@@ -58,7 +58,7 @@ Both methods return a new ViewerInputHook object, and both methods take an optio
 // script.js Example 1 - Use the Viewer.addViewerInputHook() method to create a ViewerInputHook
 
 // create an OpenSeadragon viewer
-const viewer = window.OpenSeadragon({...});
+const viewer = OpenSeadragon({...});
 // add a ViewerInputHook to the viewer
 const viewerInputHook = viewer.addViewerInputHook({ hooks: [...] });
 ```
@@ -66,7 +66,7 @@ const viewerInputHook = viewer.addViewerInputHook({ hooks: [...] });
 ```javascript
 // script.js Example 2 - Attach a new ViewerInputHook to an existing OpenSeadragon.Viewer
 
-const viewerInputHook = new window.OpenSeadragonImaging.ViewerInputHook({ viewer: existingviewer, hooks: [...] });
+const viewerInputHook = new ViewerInputHook({ viewer: existingviewer, hooks: [...] });
 ```
 
 **Example using ES module**

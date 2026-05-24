@@ -1,16 +1,38 @@
 # EditorConfig: http://editorconfig.org
+# EditorConfig Properties: https://github.com/editorconfig/editorconfig/wiki/EditorConfig-Properties
 root = true
 
 [*]
-charset = utf-8
 indent_style = space
 indent_size = 2
-insert_final_newline = true
+# tab_width defaults to the value of indent_size and doesn't usually need to be specified
+tab_width = 2
+end_of_line = lf
+charset = utf-8
 trim_trailing_whitespace = true
+insert_final_newline = true
+max_line_length = 80
+
 
 [*.html]
-indent_style = tab
-indent_size = 4
+indent_style = space
+indent_size = 2
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.xml]
+indent_style = space
+indent_size = 2
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.php]
+indent_style = space
+indent_size = 2
 end_of_line = lf
 charset = utf-8
 trim_trailing_whitespace = true
@@ -25,16 +47,24 @@ trim_trailing_whitespace = true
 insert_final_newline = true
 
 [*.js]
-indent_style = tab
-indent_size = 4
+indent_style = space
+indent_size = 2
 end_of_line = lf
 charset = utf-8
 trim_trailing_whitespace = true
 insert_final_newline = true
 
 [*.ts]
-indent_style = tab
-indent_size = 4
+indent_style = space
+indent_size = 2
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+[*.tsx]
+indent_style = space
+indent_size = 2
 end_of_line = lf
 charset = utf-8
 trim_trailing_whitespace = true

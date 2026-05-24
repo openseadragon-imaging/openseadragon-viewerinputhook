@@ -1,29 +1,33 @@
 # OpenSeadragonViewerInputHook
 
-[![Gitter](https://badges.gitter.im/openseadragon-imaging/community.svg)](https://gitter.im/openseadragon-imaging/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
-
-OpenSeadragonViewerInputHook is a plugin for [OpenSeadragon](https://github.com/openseadragon/openseadragon) 2.0.0+
+OpenSeadragonViewerInputHook is a plugin for [OpenSeadragon](https://github.com/openseadragon/openseadragon) 3.0.0+
 which provides hooks into the user input event pipeline for providing additional behavior and/or
 overriding the default behavior.
 
-[View the Documentation](https://openseadragon-imaging.github.io/docs/openseadragon-viewerinputhook/index.html)
-
-[Demo/Test Site](https://openseadragon-imaging.github.io/#/imaginghelper)
+- [Demo/Test Site](https://openseadragon-imaging.github.io/#/imaginghelper)
 
 ## Usage
 
-_**Prerequisite note: OpenSeadragonViewerInputHook requires [OpenSeadragon](https://github.com/openseadragon/openseadragon) version 2.0+.**_
+> [!NOTE]
+> _OpenSeadragonViewerInputHook requires [OpenSeadragon](https://github.com/openseadragon/openseadragon) version 3.0.0+._
 
-The OpenSeadragonViewerInputHook bundle can be obtained the following ways:
+The OpenSeadragonViewerInputHook library is bundled in ES and UMD module format separately, and can be obtained the following ways:
 
-1. Direct download [openseadragon-viewerinputhook.js](https://openseadragon-imaging.github.io/builds/openseadragon-viewerinputhook.js) (and optionally [openseadragon-viewerinputhook.js.map](https://openseadragon-imaging.github.io/builds/openseadragon-viewerinputhook.js.map))
-2. npm
+**Direct Download**
 
+- [openseadragon-viewerinputhook.d.ts](https://openseadragon-imaging.github.io/builds/openseadragon-viewerinputhook.d.ts)
+- [openseadragon-viewerinputhook.js](https://openseadragon-imaging.github.io/builds/openseadragon-viewerinputhook.js)
+- [openseadragon-viewerinputhook.js.map](https://openseadragon-imaging.github.io/builds/openseadragon-viewerinputhook.js.map)
+- [openseadragon-viewerinputhook.umd.js](https://openseadragon-imaging.github.io/builds/openseadragon-viewerinputhook.umd.js)
+- [openseadragon-viewerinputhook.umd.js.map](https://openseadragon-imaging.github.io/builds/openseadragon-viewerinputhook.umd.js.map)
+
+**npm**
+
+```sh
+npm install @openseadragon-imaging/openseadragon-viewerinputhook
 ```
-    npm install @openseadragon-imaging/openseadragon-viewerinputhook
-```
 
-The OpenSeadragonViewerInputHook bundle can be included using a script tag in HTML or imported as a library module (ES2015, CommonJS, AMD).
+The OpenSeadragonViewerInputHook module can be included using a script tag in HTML (UMD module) or imported as an ES module.
 
 A **ViewerInputHook** object can be created and attached (if desired) to an [OpenSeadragon.Viewer](https://openseadragon.github.io/docs/OpenSeadragon.Viewer.html) two ways:
 
@@ -32,55 +36,70 @@ A **ViewerInputHook** object can be created and attached (if desired) to an [Ope
 
 Both methods return a new ViewerInputHook object, and both methods take an options parameter where the event handlers to be hooked may be specified (see the 'Details' section below).
 
-**Example using an HTML script tag**
+**Example using UMD module in an HTML script tag**
 
 ```html
+<!-- Load OpenSeadragon dependency first! -->
 <script
-  type="text/javascript"
-  src="path_to/openseadragon/openseadragon.js"
+  defer
+  src="/[path_to]/openseadragon.min.js"
 ></script>
 <script
-  type="text/javascript"
-  src="path_to/openseadragon-imaging/openseadragon-viewerinputhook.js"
+  defer
+  src="/[path_to]/openseadragon-viewerinputhook.umd.js"
+></script>
+<script
+  defer
+  src="/[path_to]/script.js"
 ></script>
 ```
 
 ```javascript
-    // Example 1 - Use the Viewer.addViewerInputHook() method to create a ViewerInputHook
+// script.js Example 1 - Use the Viewer.addViewerInputHook() method to create a ViewerInputHook
 
-    // create an OpenSeadragon viewer
-    var viewer = window.OpenSeadragon({...});
-    // add a ViewerInputHook to the viewer
-    var viewerInputHook = viewer.addViewerInputHook({ hooks: [...] });
-
-
-    // Example 2 - Attach a new ViewerInputHook to an existing OpenSeadragon.Viewer
-
-    var viewerInputHook = new window.OpenSeadragonImaging.ViewerInputHook({ viewer: existingviewer, hooks: [...] });
-```
-
-**Example importing as a module**
-
-```
-    npm install openseadragon --save
-    npm install @openseadragon-imaging/openseadragon-viewerinputhook --save
+// create an OpenSeadragon viewer
+const viewer = window.OpenSeadragon({...});
+// add a ViewerInputHook to the viewer
+const viewerInputHook = viewer.addViewerInputHook({ hooks: [...] });
 ```
 
 ```javascript
+// script.js Example 2 - Attach a new ViewerInputHook to an existing OpenSeadragon.Viewer
+
+const viewerInputHook = new window.OpenSeadragonImaging.ViewerInputHook({ viewer: existingviewer, hooks: [...] });
+```
+
+**Example using ES module**
+
+```sh
+npm install openseadragon
+npm install @openseadragon-imaging/openseadragon-viewerinputhook
+```
+
+```ts
+// Example 1 - Use the Viewer.addViewerInputHook() method to create a ViewerInputHook
+
+import OpenSeadragon from 'openseadragon';
+import '@openseadragon-imaging/openseadragon-viewerinputhook';
+
+// create an OpenSeadragon viewer
+const viewer = OpenSeadragon({...});
+// add a ViewerInputHook to the viewer
+vconstr viewerInputHook = viewer.addViewerInputHook({
+  hooks: [...]
+});
+```
+
+```ts
+// Example 2 - Attach a new ViewerInputHook to an existing OpenSeadragon.Viewer
+
 import OpenSeadragon from 'openseadragon';
 import OpenSeadragonViewerInputHook from '@openseadragon-imaging/openseadragon-viewerinputhook';
 
-    // Example 1 - Use the Viewer.addViewerInputHook() method to create a ViewerInputHook
-
-    // create an OpenSeadragon viewer
-    var viewer = OpenSeadragon({...});
-    // add a ViewerInputHook to the viewer
-    var viewerInputHook = viewer.addViewerInputHook({ hooks: [...] });
-
-
-    // Example 2 - Attach a new ViewerInputHook to an existing OpenSeadragon.Viewer
-
-    var viewerInputHook = new OpenSeadragonViewerInputHook({ viewer: existingviewer, hooks: [...] });
+const viewerInputHook = new OpenSeadragonViewerInputHook({
+  viewer: existingviewer,
+  hooks: [...]
+});
 ```
 
 ## Details
@@ -96,74 +115,91 @@ or one of the pre-defined OpenSeadragon viewer trackers - currently 'viewer' or 
 The handler property of each hook definition specifies which MouseTracker handler to hook.
 Valid values are:
 
-1. 'enterHandler'
-2. 'exitHandler'
-3. 'pressHandler'
-4. 'nonPrimaryPressHandler' (OpenSeadragon v1.2.1+)
-5. 'releaseHandler'
-6. 'nonPrimaryReleaseHandler' (OpenSeadragon v1.2.1+)
-7. 'moveHandler'
-8. 'stopHandler'
-9. 'scrollHandler'
-10. 'clickHandler'
-11. 'dblClickHandler'
-12. 'dragHandler'
-13. 'dragEndHandler'
-14. 'pinchHandler'
-15. 'keyDownHandler'
-16. 'keyUpHandler'
-17. 'keyHandler'
-18. 'focusHandler'
-19. 'blurHandler'
+- `'preProcessEventHandler'`
+- `'enterHandler'`
+- `'exitHandler'` (deprecated)
+- `'leaveHandler'`
+- `'overHandler'`
+- `'outHandler'`
+- `'moveHandler'`
+- `'pressHandler'`
+- `'releaseHandler'`
+- `'nonPrimaryPressHandler'`
+- `'nonPrimaryReleaseHandler'`
+- `'clickHandler'`
+- `'dblClickHandler'`
+- `'contextMenuHandler'`
+- `'scrollHandler'`
+- `'keyDownHandler'`
+- `'keyUpHandler'`
+- `'keyHandler'`
+- `'focusHandler'`
+- `'blurHandler'`
+- `'dragHandler'`
+- `'dragEndHandler'`
+- `'pinchHandler'`
+- `'stopHandler'`
 
 The hookHandler property of each hook definition should be the user-defined event handler callback. All event handler callbacks have the following signature:
 
-    handlerFunc(event)
+```ts
+// TypeScript type declarations in openseadragon-viewerinputhook.d.ts
+
+OpenSeadragon.EventHandler<T> = (event: T) => void
+```
 
 The ViewerInputHook class inserts your event hook handler methods in front of any existing event handler methods
 so the attached handler will be called first. Additional ViewerInputHook objects can be added on the same viewer/MouseTracker to create a chain of hook methods,
-where the last added handler(s) will be called first. **Note: If multiple ViewerInputHook are attached to the same viewer/MouseTracker, destroy() should be called for each ViewerInputHook in reverse order of attachment!**
+where the last added handler(s) will be called first.
+
+> [!NOTE]
+> _If multiple ViewerInputHook are attached to the same viewer/MouseTracker, destroy() should be called for each ViewerInputHook in reverse order of attachment!_
 
 Your hook event handler methods can control the event handling behavior in one or more of the following ways:
 
 1. Set event.stopHandlers = true to prevent any more handlers in the event handler chain from being called
-2. Set event.stopBubbling = true to prevent the original DOM event from bubbling up the DOM tree (all handlers returning false will also disable bubbling)
-3. Set event.preventDefaultAction = true to prevent the viewer's default action in response to the event (currently applies to clickHandler, dragHandler, and scrollHandler on the viewer (tracker = 'viewer'))
+2. Set event.stopBubbling = true to prevent the original DOM event from bubbling up the DOM tree
+3. Set event.preventDefault = true to prevent the viewer's default action in response to the event (currently applies to preProcessEventHandler, keyDownHandler, keyUpHandler, keyHandler, contextMenuHandler, and scrollHandler on the viewer (tracker = 'viewer'))
 
 ```javascript
-    // Example
+// Example
 
-    var viewer = OpenSeadragon({...});
+var viewer = OpenSeadragon({...});
 
-    viewer.addViewerInputHook({hooks: [
-        {tracker: 'viewer', handler: 'scrollHandler', hookHandler: onViewerScroll},
-        {tracker: 'viewer', handler: 'clickHandler', hookHandler: onViewerClick}
-    ]});
-
-    function onViewerScroll(event) {
+const viewerInputHook = viewer.addViewerInputHook({
+  hooks: [
+    {
+      tracker: 'viewer',
+      handler: 'contextMenuHandler',
+      hookHandler: (event) => {
+        // Disable context menu on the viewer using ContextMenuMouseTrackerEvent.preventDefault
+        event.preventDefault = true;
+      },
+    },
+    {
+      tracker: 'viewer',
+      handler: 'scrollHandler',
+      hookHandler: (event) => {
         // Disable mousewheel zoom on the viewer and let the original mousewheel events bubble
         if (!event.isTouchEvent) {
-            event.preventDefaultAction = true;
-            return true;
+          event.stopHandlers = true;
         }
-    }
-
-    function onViewerClick(event) {
-        // Disable click zoom on the viewer using event.preventDefaultAction
-        event.preventDefaultAction = true;
-        event.stopBubbling = true;
-    }
+      },
+    },
+    {
+      tracker: 'viewer',
+      handler: 'clickHandler',
+      hookHandler: (event) => {
+        // Disable click zoom on the viewer
+        event.stopHandlers = true;
+      },
+    },
+  ],
+});
 ```
-
-## Demo/Test Site
-
-The [demo site](https://openseadragon-imaging.github.io/#/imaginghelper) uses
-OpenSeadragonViewerInputHook to monitor cursor position and provide custom click and mousewheel event actions.
-
-The source code can be found [here](https://github.com/openseadragon-imaging/openseadragon-imaging/tree/master/site.github.io/src/page-imaginghelper).
 
 ## TODO
 
-1. jsdoc documentation
-2. Provide hooks on reference strip events
-3. Provide hooks on navigator events
+- jsdoc documentation
+- Provide hooks on reference strip events
+- Provide hooks on navigator events

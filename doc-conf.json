@@ -1,6 +1,7 @@
 {
   "source": {
     "include": [
+      "./README.md",
       "../openseadragon-imaging/shared/docs/docs-globals.js",
       "./dist/openseadragon-viewerinputhook.js"
     ]
@@ -9,7 +10,7 @@
   "tags": {
     "allowUnknownTags": true
   },
-  "plugins": [],
+  "plugins": ["plugins/markdown"],
   "templates": {
     "cleverLinks": true,
     "monospaceLinks": false,

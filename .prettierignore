@@ -3,9 +3,8 @@ dist/**
 docs/**
 LICENSE
 .editorconfig
-.eslintignore
 .gitattributes
 .gitignore
-.npmignore
 .prettierignore
 package-lock.json
+.DS_Store

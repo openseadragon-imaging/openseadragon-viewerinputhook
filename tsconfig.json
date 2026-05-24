@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "rootDir": ".",
+    "outDir": "./dist",
+    "target": "ES2020",
+    "sourceMap": true,
+    "removeComments": false,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "types": ["node"],
+
+    /* For browser compatibility */
+    "lib": ["ES2020", "DOM"] // Include DOM types for HTML usage
+
+    /* Output as .mjs for clarity in ESM environments */
+    //"outFile": undefined // Not used for modules; each file stays separate
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
+}

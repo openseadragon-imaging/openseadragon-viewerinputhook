@@ -1,8 +1,20 @@
 // Place your settings in this file to overwrite default and user settings.
 {
+  "debug.javascript.terminalOptions": {
+    "resolveSourceMapLocations": [
+      "${workspaceFolder}/**",
+      "!**/node_modules/**",
+      "**/node_modules/.vite-temp/**"
+    ]
+  },
+
+  "js/ts.tsdk.path": "node_modules/typescript/lib",
+  "typescript.tsdk": "node_modules/typescript/lib",
+
   //"eslint.workingDirectories": ["./src"],
-  //"tslint.enable": false,
+  "eslint.workingDirectories": ["."],
   "eslint.enable": true,
+  //"tslint.enable": false,
   "eslint.trace.server": "off",
   "eslint.debug": false,
   "eslint.lintTask.enable": false,
@@ -11,29 +23,44 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": false,
   "editor.formatOnPaste": false,
+  "editor.linkedEditing": true,
+
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+
+  //"prettier.requireConfig": true,
 
   "[javascript]": {
     //"editor.defaultFormatter": "esbenp.prettier-vscode",
     //"editor.formatOnSave": true,
     //"editor.formatOnPaste": true,
-    "editor.tabSize": 4,
-    "editor.insertSpaces": false
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
   },
 
   "[typescript]": {
     //"editor.defaultFormatter": "esbenp.prettier-vscode",
     //"editor.formatOnSave": true,
     //"editor.formatOnPaste": true,
-    "editor.tabSize": 4,
-    "editor.insertSpaces": false
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
   },
 
   "[html]": {
     //"editor.defaultFormatter": "esbenp.prettier-vscode",
     //"editor.formatOnSave": true,
     //"editor.formatOnPaste": true,
-    "editor.tabSize": 4,
-    "editor.insertSpaces": false
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
+  },
+
+  "[xml]": {
+    //"editor.defaultFormatter": "esbenp.prettier-vscode",
+    //"editor.formatOnSave": true,
+    //"editor.formatOnPaste": true,
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true
   },
 
   "[json]": {
@@ -64,10 +91,10 @@
   "editor.fontSize": 15,
 
   // The number of spaces a tab is equal to.
-  "editor.tabSize": 4,
+  "editor.tabSize": 2,
 
   // Insert spaces when pressing Tab.
-  "editor.insertSpaces": false,
+  "editor.insertSpaces": true,
 
   // When opening a file, `editor.tabSize` and `editor.insertSpaces` will be detected based on the file contents.
   "editor.detectIndentation": false,
@@ -80,7 +107,7 @@
   //  - 'on' (viewport wrapping),
   //  - 'wordWrapColumn' (wrap at `editor.wordWrapColumn`) or
   //  - 'bounded' (wrap at minimum of viewport and `editor.wordWrapColumn`).
-  "editor.wordWrap": "on",
+  "editor.wordWrap": "off",
 
   // Controls the indentation of wrapped lines. Can be one of 'none', 'same' or 'indent'.
   "editor.wrappingIndent": "none",

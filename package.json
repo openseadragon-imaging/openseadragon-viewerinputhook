@@ -1,6 +1,6 @@
 {
   "name": "@openseadragon-imaging/openseadragon-viewerinputhook",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "type": "module",
   "description": "OpenSeadragon plugin which provides hooks into the viewer input event pipeline.",
   "license": "MIT",

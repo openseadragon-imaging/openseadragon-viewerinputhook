@@ -16,6 +16,7 @@ The OpenSeadragonViewerInputHook library is bundled in ES and UMD module format 
 **Direct Download**
 
 - [openseadragon-viewerinputhook.d.ts](https://openseadragon-imaging.github.io/builds/openseadragon-viewerinputhook.d.ts)
+- [openseadragon-viewerinputhook.d.ts.map](https://openseadragon-imaging.github.io/builds/openseadragon-viewerinputhook.d.ts.map)
 - [openseadragon-viewerinputhook.js](https://openseadragon-imaging.github.io/builds/openseadragon-viewerinputhook.js)
 - [openseadragon-viewerinputhook.js.map](https://openseadragon-imaging.github.io/builds/openseadragon-viewerinputhook.js.map)
 - [openseadragon-viewerinputhook.umd.js](https://openseadragon-imaging.github.io/builds/openseadragon-viewerinputhook.umd.js)
